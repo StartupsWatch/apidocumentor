@@ -10,5 +10,8 @@ Ready for API documentation.
 - Edit config/initializer/api_documentor.rb # for admin user & password
 - Run as usual rails app
 `rails s`
-- Visit `/admin` for administrate (demo:123456)
+- Visit `/admin/projects` for administrate (demo:123456)
+
+== Demo
+- Visit http://apidoc.dakick.com/
 

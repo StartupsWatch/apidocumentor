@@ -1,0 +1,14 @@
+== API Document(e|o)r
+
+Ready for API documentation.
+
+== Setup
+
+- Edit database.yml
+- Run db migrations (rake db:migrate)
+- Edit app/views/projects/index.html.erb
+- Edit config/initializer/api_documentor.rb # for admin user & password
+- Run as usual rails app
+`rails s`
+- Visit `/admin` for administrate (demo:123456)
+

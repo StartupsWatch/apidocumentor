@@ -1,0 +1,32 @@
+body {
+  padding-top: 60px;
+}
+section {
+  padding-top: 35px;
+}
+
+.field {
+  padding: 7px;
+  label {
+    margin-right: 20px;
+    display:inline-block;
+  }
+  input[type=checkbox]{
+    margin-top: 10px;
+  }
+}
+
+.field_with_errors {
+  input {
+    border:1px solid red;
+  }
+}
+
+.clear {
+  clear: both;
+}
+
+.fspan {
+  width: 50px;
+  display:inline-block;
+}

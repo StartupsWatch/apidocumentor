@@ -1,0 +1,65 @@
+<% content_for :meta do %>
+  <title><%="#{@method_type.http_method} #{@method_type.url}" %></title>
+<% end %>
+<% content_for :topbar_nav do %>
+  <li><a href="#">^</a></li>
+  <li><a href="#url">Url</a></li>
+  <li><a href="#parameters">Parameters</a></li>
+  <li><a href="#request">Request</a></li>
+  <li><a href="#response">Response</a></li>
+  <li><a href="#errors">Errors</a></li>
+<% end %>
+<h1><%= link_to("#{@method_type.api_type.name}", "/projects/#{@method_type.api_type.project.slug}/apis/#{@method_type.api_type.id}") %> // <%= "#{@method_type.name}" %> // <small><%= "#{@method_type.http_method} #{@method_type.url}"%></small></h1>
+<p><%= "#{@method_type.description}" %></p>
+
+<section id="url">
+  <div class="block" id="url">
+    <h2>URL</h2>
+    <pre><%= "#{@method_type.http_method} #{@method_type.url}" %></pre>
+  </div>
+</section>
+
+<section id="parameters">
+  <div class="block">
+    <h2>Parameters</h2>
+    <table class="bordered-table">
+      <% @method_type.parameter_types.order("name ASC").each do |param_type| %>
+      <tr>
+        <td class="span2"><strong><%= param_type.name %></strong></td>
+        <td class="span10"><%= param_type.description %></td>
+        <td class="span1"><em><%= param_type.param_type %></em></td>
+        <td class="span1"><%= boolean_colorize(param_type.optional) %></td>
+      </tr>
+      <%end%>
+    </table>
+  </div>
+</section>
+
+<section id="request">
+  <div class="block">
+    <h2>Sample Request</h2>
+    <pre><%= "#{@method_type.sample_request}" %></pre>
+  </div>
+</section>
+
+<section id="response">
+  <div class="block">
+    <h2>Sample Response</h2>
+    <pre class="prettyprint"><%= JSON.pretty_generate(JSON.parse(@method_type.sample_response)) unless @method_type.sample_response.blank? %></pre>
+  </div>
+</section>
+
+<section id="errors">
+  <div class="block">
+    <h2>Expectable Errors</h2>
+    <table class="bordered-table">
+      <% @method_type.error_types.each do |error_type| %>
+      <tr>
+        <td class="span1"><strong><%= error_type.name %></strong></td>
+        <td class="span2"><strong><%= error_type.name %></strong></td>
+        <td class="span11"><%= error_type.description %></td>
+      </tr>
+      <%end%>
+    </table>
+  </div>
+</section>

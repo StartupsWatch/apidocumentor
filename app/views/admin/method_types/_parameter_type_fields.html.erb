@@ -1,0 +1,12 @@
+<div class="field clear">
+  <label class="pull-right label"><%= f.link_to_remove "Remove Param" %></label>
+  <%= f.label :param_type, "*Type" %>
+  <%= f.select(:param_type, options_for_select([["string", "string"], ["integer", "integer"], ["float", "float"], ["datetime", "datetime"], ["date", "date"], ["file", "file"], ["enum", "enum"], ["array", "array"]], f.object.param_type), {}, :class => "mini") %>  
+  <br />
+  <%= f.label :name, "*Name" %><%= f.text_field :name %>
+  <br />
+  <%= f.label :description, "*Description" %><%= f.text_field :description, :class => "span13" %>
+  <br />
+  <%= f.label :optional %><%= f.check_box :optional %>
+</div>
+<hr />

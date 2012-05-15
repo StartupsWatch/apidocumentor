@@ -1,0 +1,35 @@
+<% content_for :meta do %>
+  <title>HTTP Response Codes</title>
+<% end %>
+<div class="row">
+  <div class="span16">
+    <div class="page-header">
+      <h1>HTTP Response Codes</h1>
+      <p>Success &amp; failure codes for HTML responses.</p>
+
+    </div>
+    <% @codes.each do |key, val| %>
+    <div>
+      <h3><%= key.to_s.upcase %> codes</h3>
+      <table>
+        <thead>
+          <tr>
+            <th class="span1">Code</th>
+            <th class="span3">Name</th>
+            <th class="span10">Meaning</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% val.each do |v| %>
+          <tr>
+            <td class="span1"><%= v[0] %></td>
+            <td class="span3"><%= v[1] %></td>
+            <td class="span10"><%= v[2] %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <% end %>
+  </div>
+</div>

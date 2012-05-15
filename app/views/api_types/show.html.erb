@@ -1,0 +1,37 @@
+<% content_for :meta do %>
+  <title><%="#{@api_type.name} / #{@api_type.project.name}" %></title>
+<% end %>
+<div class="row">
+  <div class="span16">
+    <div class="page-header">
+      <h1><%= @api_type.name %></h1>
+      <p>
+        Project: <%= link_to @api_type.project.name, "/projects/#{@api_type.project.slug}" %>        
+      </p>
+    </div>
+    <div>
+      <h3>Methods</h3>
+      <table class="zebra-striped">
+        <thead>
+          <tr>
+            <th>HTTP M.</th>
+            <th>Url</th>
+            <th>Action</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @api_type.method_types.each do |method_type| %>
+          <tr>
+            <td span="1"><%= method_type.http_method%></td>
+            <td span="3"><%= method_type.url%></td>
+            <td span="1"><%= link_to method_type.name, "/projects/#{@api_type.project.slug}/apis/#{@api_type.id}/methods/#{method_type.id}"%></td>
+            <td span="9"><%= method_type.description%></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    
+  </div>
+</div>

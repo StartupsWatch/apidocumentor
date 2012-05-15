@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="span16">
+    <div class="page-header">
+      <h2><%= @project.name %> // <small><%=link_to "(/) Edit", edit_admin_project_path %> | 
+      <%= link_to "(x) Destroy", admin_project_path(@project), :method => :delete, :confirm => "Are you sure?" %></small></h2>
+      <p><%= @project.description %></p>
+
+    </div>
+    <div>
+      <h3>APIs</h3>
+      <table class="zebra-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Methods</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @project.api_types.order("name ASC").each do |api_type| %>
+          <tr>
+            <td><%= link_to api_type.name, admin_api_type_path(api_type) %></td>
+            <td><%= api_type.method_types.map {|mt| mt.name}.join(" / ")%></td>
+            <th>
+              <%= link_to "(/) Edit", edit_admin_api_type_path(api_type) %> | 
+              <%= link_to "(x) Destroy", admin_api_type_path(api_type), :method => :delete, :confirm => "Are you sure?" %>
+            </th>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <%=link_to "Add a new API", new_admin_api_type_path(:project_id => @project.id) %>
+    // 
+    <%= link_to "(L) View all projects", admin_projects_path %>
+  </div>
+</div>

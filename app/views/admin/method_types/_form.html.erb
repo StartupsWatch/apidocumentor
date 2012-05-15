@@ -1,0 +1,50 @@
+<%= nested_form_for [:admin, @method_type] do |f| %>
+  <%= f.hidden_field :api_type_id %>
+  <div class="field">
+    <%= f.label :http_method %>
+    <%= f.select(:http_method, options_for_select(["GET", "POST", "PUT", "DELETE"], @method_type.http_method), {}, :class => "mini") %>
+  </div>
+  <hr />
+  <div class="field">
+    <%= f.label :name, "*Name" %>
+    <%= f.text_field :name, :class => "span3" %>
+  </div>
+  <hr />
+  <div class="field">
+    <%= f.label :description, "*Description" %>
+    <%= f.text_field :description, :class => "span13" %>
+  </div>
+  <hr />
+  <div class="field">
+    <%= f.label :url, "*Url" %>
+    <%= f.text_field :url, :class => "span7" %>
+  </div>
+  <hr />
+  <div class="field">
+    <%= f.label :sample_request, "Sample Url Request" %>
+    <%= f.text_field :sample_request, :class => "span13" %>
+  </div>
+  <hr />
+  <div class="field">
+    <%= f.label :sample_response, "*Sample Response" %>
+    <%= f.text_area :sample_response, :class => "span13", :rows=> 3 %>
+  </div>
+  <hr />
+  <div class="inner-fields">
+    <%= f.fields_for :parameter_types do |builder| %>
+      <%= render :partial => 'parameter_type_fields', :locals => {:f => builder} %>
+    <% end %>
+    <label>&nbsp;</label><%= f.link_to_add "+ Add a parameter", :parameter_types, :class => "btn success", :style => "margin-left:30px;" %>
+  </div>
+  <hr />
+  <div class="inner-fields">
+    <%= f.fields_for :error_types do |builder| %>
+      <%= render 'error_type_fields', :f => builder %>
+    <% end %>
+    <label>&nbsp;</label><%= f.link_to_add "+ Add an error", :error_types, :class => "btn success", :style => "margin-left:30px;"  %>
+  </div>
+  <hr />
+  <div class="actions">
+    <%= f.submit "Save Method", :class => "btn primary" %>
+  </div>
+<% end %>

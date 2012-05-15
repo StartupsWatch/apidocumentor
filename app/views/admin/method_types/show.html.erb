@@ -1,0 +1,45 @@
+<h2><%= "#{@method_type.http_method}"%> <%= link_to("#{@method_type.api_type.name}", admin_api_type_path(@method_type.api_type)) %> // <small><%=link_to "(/) Edit", edit_admin_method_type_path %> | 
+<%= link_to "(x) Destroy", admin_method_type_path(@method_type), :method => :delete, :confirm => "Are you sure?" %></small></h2>
+<p><strong><%= "#{@method_type.name}" %></strong>: <%= "#{@method_type.description}" %></p>
+
+<div class="block">
+  <h3>URL</h3>
+  <pre><%= "#{@method_type.http_method} #{@method_type.url}" %></pre>
+</div>
+
+<div class="block">
+  <h3>Parameters</h3>
+  <table class="bordered-table">
+    <% @method_type.parameter_types.order("name ASC").each do |param_type| %>
+    <tr>
+      <td class="span2"><strong><%= param_type.name %></strong></td>
+      <td class="span10"><%= param_type.description %></td>
+      <td class="span1"><em><%= param_type.param_type %></em></td>
+      <td class="span1"><%= boolean_colorize(param_type.optional) %></td>
+    </tr>
+    <%end%>
+  </table>
+</div>
+
+<div class="block">
+  <h3>Request</h3>
+  <pre><%= "#{@method_type.sample_request}" %></pre>
+</div>
+
+<div class="block">
+  <h3>Response</h3>
+  <pre><%= JSON.pretty_generate(JSON.parse(@method_type.sample_response)) unless @method_type.sample_response.blank? %></pre>
+</div>
+
+<div class="block">
+  <h3>Errors</h3>
+  <table class="bordered-table">
+    <% @method_type.error_types.each do |error_type| %>
+    <tr>
+      <td class="span1"><strong><%= error_type.name %></strong></td>
+      <td class="span2"><strong><%= error_type.name %></strong></td>
+      <td class="span11"><%= error_type.description %></td>
+    </tr>
+    <%end%>
+  </table>
+</div>

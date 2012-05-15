@@ -1,0 +1,10 @@
+<%= form_for [:admin, @api_type] do |f| %>
+  <%= f.hidden_field :project_id %>
+  <div class="field">
+    <%= f.label :name %>:
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit :class => "btn primary" %>
+  </div>
+<% end %>

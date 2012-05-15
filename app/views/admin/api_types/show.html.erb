@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="span16">
+    <div class="page-header">
+      <h2><%= @api_type.name %> // <small><%=link_to "(/) Edit", edit_admin_api_type_path %> | 
+      <%= link_to "(x) Destroy", admin_api_type_path(@api_type), :method => :delete, :confirm => "Are you sure?" %></small></h2>
+      <p>
+        Project: <%= link_to @api_type.project.name, admin_project_path(@api_type.project) %>        
+      </p>
+    </div>
+    <div>
+      <h3>Methods</h3>
+      <table class="zebra-striped">
+        <thead>
+          <tr>
+            <th>HTTP M.</th>
+            <th>Name</th>
+            <th>Url</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @api_type.method_types.each do |method_type| %>
+          <tr>
+            <td><%= method_type.http_method%></td>
+            <td><%= method_type.name%></td>
+            <td><%= method_type.url%></td>
+            <th>
+              <%=link_to "(?) Show", admin_method_type_path(method_type) %> | 
+              <%=link_to "(/) Edit", edit_admin_method_type_path(method_type) %> | 
+              <%= link_to "(x) Destroy", admin_method_type_path(method_type), :method => :delete, :confirm => "Are you sure?" %>
+            </th>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%=link_to "Add a new Method", new_admin_method_type_path(:api_type_id => @api_type.id) %>
+
+    </div>
+    
+  </div>
+</div>

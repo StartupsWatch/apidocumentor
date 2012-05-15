@@ -1,0 +1,26 @@
+<table class="zebra-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Slug</th>
+      <th>Created At</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @projects.each do |project| %>
+    <tr>
+      <td><%= link_to project.name, admin_project_path(project) %></td>
+      <td><%= project.slug%></td>
+      <td><%= project.created_at%></td>
+      <th>
+        <%=link_to "(/) Edit", edit_admin_project_path(project) %> | 
+        <%= link_to "(x) Destroy", admin_project_path(project), :method => :delete, :confirm => "Are you sure?" %>
+      </th>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="actions">
+  <%=link_to "Create a new project", new_admin_project_path %>
+</div>

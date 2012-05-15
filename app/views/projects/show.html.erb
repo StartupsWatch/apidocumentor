@@ -1,0 +1,44 @@
+<% content_for :meta do %>
+  <title><%= @project.name %></title>
+<% end %>
+<div class="row">
+  <div class="span16">
+    <div class="page-header">
+      <h1><%= @project.name %></h1>
+      <p><%= @project.description %></p>
+
+    </div>
+    <div>
+      <h3>APIs</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Methods</th>
+            <th>API</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @project.api_types.order("name ASC").each do |api_type| %>
+          <tr>
+            <td>
+              <table class="bordered-table">
+                <tbody>
+                  <% api_type.method_types.each do |method_type| %>
+                  <tr>
+                    <td class="span2"><%= method_type.http_method%></td>
+                    <td class="span8"><%= method_type.url%></td>
+                    <td class="span3"><%= link_to method_type.name, "/projects/#{api_type.project.slug}/apis/#{api_type.id}/methods/#{method_type.id}"%></td>
+                  </tr>
+                  <% end %>
+                </tbody>
+              </table>              
+            </td>
+            <td><%= link_to api_type.name, "/projects/#{@project.slug}/apis/#{api_type.id}" %></td>
+            
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

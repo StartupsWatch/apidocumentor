@@ -4,6 +4,7 @@ gem 'rails', '3.2.3'
 gem 'mysql2'
 gem 'capistrano'
 gem 'puma'
+gem 'unicorn'
 
 # UI
 gem 'jquery-rails'

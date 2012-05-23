@@ -11,6 +11,9 @@ class MethodType < ActiveRecord::Base
   # validations
   validates_presence_of :api_type, :name, :http_method, :url, :sample_response
   
+  # accessors
+  attr_accessible :api_type_id, :http_method, :name, :description, :url, :sample_request, :sample_response, :parameter_types_attributes
+  
   # serializations
   # serialize :sample_response
 end

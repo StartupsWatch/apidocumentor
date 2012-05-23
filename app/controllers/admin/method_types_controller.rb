@@ -1,4 +1,6 @@
 class Admin::MethodTypesController < Admin::ApplicationController
+  cache_sweeper :method_type_sweeper, only: [:create, :update, :destroy]
+  
   def index
     @method_types = MethodType.all
   end

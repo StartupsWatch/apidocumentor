@@ -1,4 +1,6 @@
 class Admin::ProjectsController < Admin::ApplicationController
+  cache_sweeper :project_sweeper, only: [:create, :update, :destroy]
+  
   def index
     @projects = Project.all
   end

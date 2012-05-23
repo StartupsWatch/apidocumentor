@@ -1,4 +1,6 @@
 class Admin::ApiTypesController < Admin::ApplicationController
+  cache_sweeper :api_type_sweeper, only: [:create, :update, :destroy]
+  
   def index
     if params[:project_id]
       @api_types = ApiType.where(:project_id => params[:project_id]).order("name ASC")

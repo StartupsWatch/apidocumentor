@@ -7,8 +7,11 @@ class Project < ActiveRecord::Base
   validates_presence_of :name
   validates_uniqueness_of :slug
   
+  # accessors
+  attr_accessible :name, :description
+  
   # actions
-  before_save :set_slug
+  before_create :set_slug
   
   # get slug
   def set_slug

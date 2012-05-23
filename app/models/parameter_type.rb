@@ -4,4 +4,7 @@ class ParameterType < ActiveRecord::Base
   
   # validations
   validates_presence_of :method_type, :name, :param_type
+  
+  # accessors
+  attr_accessible :method_type_id, :param_type, :name, :description, :optional
 end

@@ -4,4 +4,7 @@ class ErrorType < ActiveRecord::Base
   
   # validations
   validates_presence_of :method_type, :code, :name
+  
+  # accessors
+  attr_accessible :method_type_id, :code, :name, :description
 end

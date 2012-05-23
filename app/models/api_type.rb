@@ -5,4 +5,7 @@ class ApiType < ActiveRecord::Base
   
   # validations
   validates_presence_of :name
+  
+  # accessors
+  attr_accessible :project_id, :name
 end

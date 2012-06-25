@@ -41,6 +41,7 @@
       _gaq.push(['_setAccount', 'UA-16133327-2']);
       _gaq.push(['_setDomainName', '.dakick.com']);
       _gaq.push(['_trackPageview']);
+      setTimeout('_gaq.push([\'_trackEvent\', \'NoBounce\', \'Over 30 seconds\'])',30000);
 
       (function() {
         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;

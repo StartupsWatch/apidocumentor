@@ -9,8 +9,6 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "application" %>
-    <script type="text/javascript" src="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js"></script>
     <link href="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css" rel="stylesheet">
     <%= csrf_meta_tags %>
   </head>
@@ -35,6 +33,8 @@
       </footer>
     </div> <!-- /container -->
 
+    <%= javascript_include_tag "application" %>
+    <script type="text/javascript" src="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js"></script>
     <script type="text/javascript">
 
       var _gaq = _gaq || [];

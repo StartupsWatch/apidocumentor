@@ -29,7 +29,7 @@
     <div class="container">
       <%= yield %>
       <footer>
-        <p>&copy; <%=AppConfig["copyright"]%> <span class="pull-right">// powered by <a href="https://github.com/dakick/apidocumentor">api document(o|e)r</span></p>
+        <p><span><%= link_to "Terms of service", tos_path %></span> - &copy; <%=AppConfig["copyright"]%>  <span class="pull-right">// powered by <a href="https://github.com/dakick/apidocumentor">api document(o|e)r</span></p>
       </footer>
     </div> <!-- /container -->
 

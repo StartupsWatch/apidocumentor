@@ -16,4 +16,5 @@ ApiDocumentor::Application.routes.draw do
   
   # Static pages
   get "/http-response-codes"                               => "static_files#http_response_codes"
+  get "/tos"                                               => "static_files#tos", as: :tos
 end

@@ -26,4 +26,8 @@ class StaticFilesController < ApplicationController
       ]
     }
   end
+  
+  def tos
+    
+  end
 end
